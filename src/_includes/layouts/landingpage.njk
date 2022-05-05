@@ -1,11 +1,16 @@
----js
-{
-  eleventyComputed: {
-    landingpage: (data) => data.landingpage[data.locale],
-  }
-}
+---
+layout: base
+pagination:
+  data: landingpage
+  size: 1
+  alias: t
+  resolve: values
+permalink: "/{% if t.locale != 'en' %}{{ t.locale | slugify }}/{% endif %}"
+eleventyComputed:
+  locale: "{{ t.locale }}"
+  title: "{{ t.hero.title }}"
 ---
 
-<h1>{{ landingpage.hero.title }}</h1>
+<h1>{{ t.hero.title }}</h1>
 
-<button>{{ landingpage.cta.title }}</button>
+<button>{{ t.cta.title }}</button>

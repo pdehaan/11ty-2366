@@ -1,9 +1,14 @@
----js
-{
-  eleventyComputed: {
-    about: (data) => data.about[data.locale],
-  }
-}
+---
+layout: base
+pagination:
+  data: about
+  size: 1
+  alias: t
+  resolve: values
+permalink: "/about/{% if t.locale != 'en' %}{{ t.locale | slugify }}/{% endif %}"
+eleventyComputed:
+  locale: "{{ t.locale }}"
+  title: "{{ t.hero.title }}"
 ---
 
-<h1>{{ about.hero.title }}</h1>
+<h1>{{ t.hero.title }}</h1>
