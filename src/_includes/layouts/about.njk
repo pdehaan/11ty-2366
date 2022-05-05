@@ -1,0 +1,9 @@
+---js
+{
+  eleventyComputed: {
+    about: (data) => data.about[data.locale],
+  }
+}
+---
+
+<h1>{{ about.hero.title }}</h1>

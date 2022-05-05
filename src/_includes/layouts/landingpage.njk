@@ -1,0 +1,11 @@
+---js
+{
+  eleventyComputed: {
+    landingpage: (data) => data.landingpage[data.locale],
+  }
+}
+---
+
+<h1>{{ landingpage.hero.title }}</h1>
+
+<button>{{ landingpage.cta.title }}</button>
